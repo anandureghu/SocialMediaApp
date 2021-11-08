@@ -28,6 +28,31 @@ const register = async (req,res) => {
     }
 }
 
+const login = async (req,res) => {
+    const{username, password} = req.body;
+
+    let user;
+    if(username.includes("@")){
+        user = await User.findOne({email: username});
+    }
+    else{
+        user = await User.findOne({username});
+    }
+
+    if(!user){
+        return res.status(404).json({success:false, msg: "user not found"});
+    }
+
+    const isValidPassword = await bcrypt.compare(password, user.password);
+
+    if(!isValidPassword){
+        return res.status(400).json({success:false, msg: "Incorrect Password"});
+    }
+
+    res.status(200).json({success: true, user});
+}
+
 module.exports = {
     register,
+    login
 }
