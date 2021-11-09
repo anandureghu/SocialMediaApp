@@ -10,14 +10,16 @@ const morgan = require('morgan');
 app.use(express.json());
 
 // Routers
-const userRouter = require('./routes/auth');
+const authRouter = require('./routes/auth');
+const userRouter = require('./routes/user');
 
 app.get("/", (req, res)=>{
     res.send("Social Media App");
 });
 
 // Routes
-app.use("/api/v1/auth", userRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users", userRouter);
 
 // Middleware
 

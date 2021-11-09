@@ -42,7 +42,23 @@ const UserSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    description: {
+        type: String,
+        maxlength: 150
+    },
+    city: {
+        type: String,
+        maxlength: 50
+    },
+    from: {
+        type: String,
+        maxlength: 50
+    },
+    relationship: {
+        type: String,
+        enum: ["single", "married", "divorced"],
+    },
 
 }, {timestamps: true});
 
