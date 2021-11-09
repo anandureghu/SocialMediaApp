@@ -1,7 +1,11 @@
 const router = require('express').Router();
-const {updateUser, deleteUser} = require('../controllers/user');
+const {updateUser, deleteUser, getUser} = require('../controllers/user');
 
-router.route("/:username").patch(updateUser).delete(deleteUser);
+
+router.route("/:username")
+    .patch(updateUser)
+    .delete(deleteUser)
+    .get(getUser);
 // router.route("/").get();
 
 

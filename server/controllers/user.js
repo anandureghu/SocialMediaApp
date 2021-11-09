@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require('bcrypt');
 
+// Update user
 const updateUser = async (req, res) => {
     try {
         
@@ -26,6 +27,7 @@ const updateUser = async (req, res) => {
     }
 }
 
+// Delete user
 const deleteUser = async (req, res) => {
     try {
         if(req.body.username === req.params.username || req.body.isAdmin){
@@ -44,5 +46,16 @@ const deleteUser = async (req, res) => {
     }
 }
 
+// Get user
+const getUser = async (req, res) => {
+    try {
+        const result = await User.findOne({username: req.params.username}).select("-password -createdAt");
 
-module.exports = {updateUser, deleteUser}
+        res.status(200).json({success: true, result});
+    } catch (error) {
+        res.status(500).json({success:false, error});
+
+    }
+}
+
+module.exports = {updateUser, deleteUser, getUser}
