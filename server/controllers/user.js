@@ -58,4 +58,51 @@ const getUser = async (req, res) => {
     }
 }
 
-module.exports = {updateUser, deleteUser, getUser}
+// Follow user
+const followUser = async (req, res) => {
+    if(req.body.username !== req.params.username){
+        const user = await User.findOne({username: req.body.username});
+        const followingUser = await User.findOne({username: req.params.username});
+
+        if(!user || !followingUser){
+            return res.status(400).json({success:false, msg: "Invalid credentials"});
+        }
+
+        if(!user.following.includes(req.params.username)){
+            await user.updateOne({$push: {following: req.params.username}});
+            await followingUser.updateOne({$push: {followers: req.body.username}});
+            res.status(200).json({success:true, msg: "User has been followed"});
+        }else{
+            res.status(400).json({success:flase, msg: "You are already following this user"});
+        }
+
+    }else{
+        return res.status(403).json({success:false, msg: "You can't follow yourself"});
+    }
+
+}
+
+// Unfollow user
+const unfollowUser = async (req, res) => {
+    if(req.body.username !== req.params.username){
+        const user = await User.findOne({username: req.body.username});
+        const unfollowingUser = await User.findOne({username: req.params.username});
+
+        if(!user || !unfollowingUser){
+            return res.status(400).json({success:false, msg: "Invalid credentials"});
+        }
+
+        if(user.following.includes(req.params.username)){
+            await user.updateOne({$pull: {following: req.params.username}});
+            await unfollowingUser.updateOne({$pull: {followers: req.body.username}});
+            res.status(200).json({success:true, msg: "User has been unfollowed"});
+        }else{
+            res.status(400).json({success:false, msg: "You cant unfollow a user that you dont follow"});
+        }
+        
+    }else{
+        return res.status(403).json({success:false, msg: "You can't unfollow yourself"});
+    }
+}
+
+module.exports = {updateUser, deleteUser, getUser, followUser, unfollowUser};
