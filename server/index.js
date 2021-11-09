@@ -12,6 +12,7 @@ app.use(express.json());
 // Routers
 const authRouter = require('./routes/auth');
 const userRouter = require('./routes/user');
+const postRouter = require("./routes/posts");
 
 app.get("/", (req, res)=>{
     res.send("Social Media App");
@@ -20,6 +21,7 @@ app.get("/", (req, res)=>{
 // Routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/posts", postRouter);
 
 // Middleware
 
