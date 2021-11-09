@@ -1,4 +1,6 @@
 const Post = require('../models/Post');
+const User = require('../models/User');
+
 
 const createPost = async (req, res) => {
     try {
@@ -76,10 +78,45 @@ const likePost = async (req, res) => {
     }
 }
 
+const getTimelinePosts = async (req, res) => {
+    try {
+        if(!req.body.username){
+            return res.status(400).json({success: false, msg: "No user logged in"});
+        }
+        const user = await User.findOne({username: req.body.username});
+        const userPosts = await Post.find({username: user.username});
+        const friendPosts = await Promise.all(
+            user.following.map(friendUsername => {
+                return Post.find({username: friendUsername})
+            })
+        );
+        const posts = await userPosts.concat(...friendPosts);
+        res.status(200).json({success: true, nbHits: posts.length, posts});
+    } catch (error) {
+        res.status(500).json({success: false, msg: "Internal server error", error});
+    }
+}
+
+const getAllPosts = async (req, res) => {
+    try {
+        if(!req.params.username){
+            return res.status(400).json({success: false, msg: "No user logged in"});
+        }
+        
+        const posts = await Post.find({username: req.params.username});
+        
+        res.status(200).json({success: true, nbHits: posts.length, posts});
+    } catch (error) {
+        res.status(500).json({success: false, msg: "Internal server error", error});
+    }
+} 
+
 module.exports = {
     createPost,
     updatePost,
     getPost,
     deletePost,
-    likePost
+    likePost,
+    getTimelinePosts,
+    getAllPosts
 }
