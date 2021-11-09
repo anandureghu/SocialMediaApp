@@ -56,9 +56,30 @@ const deletePost = async (req, res) => {
     }
 }
 
+// Like or dislike post
+
+const likePost = async (req, res) => {
+    try {
+        const post = await Post.findOne({_id: req.params.id});
+        if(!post){
+            return res.status(400).json({success: false, msg: `No post with id: ${req.params.id}`});
+        }
+        if(post.likes.includes(req.body.username)){
+            await post.updateOne({$pull: {likes: req.body.username}});
+            return res.status(200).json({success: true, msg: "Post Disliked Succeesfully"});
+        }else{
+            await post.updateOne({$push: {likes: req.body.username}});
+            return res.status(200).json({success: true, msg: "Post Liked Successfully"})
+        }
+    } catch (error) {
+        res.status(500).json({success: false, msg: "Internal server error", error});
+    }
+}
+
 module.exports = {
     createPost,
     updatePost,
     getPost,
-    deletePost
+    deletePost,
+    likePost
 }
