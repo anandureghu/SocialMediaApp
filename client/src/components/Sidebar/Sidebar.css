@@ -1,5 +1,6 @@
 .sidebar{
     height: calc(100vh - 60px);
+    overflow-y: scroll;
 }
 .sidebarWrapper{
     /* background-color: chartreuse; */
@@ -12,6 +13,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .sidebar-link-icon{
@@ -20,15 +22,50 @@
 
 .sidebar-button{
     border: none;
-    padding: 15px 20px;
+    padding: 15px 50px;
     margin-bottom: 20px;
     /* width: 100%; */
     font-family: "Roboto";
     font-size: 15px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .sidebar-hr{
     background-color: rgb(155, 155, 155);
     width: 100%;
+}
+
+.sidebar-friends{
+    margin-top: 20px;
+}
+
+.sidebar-friend{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.sidebar-friend img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-track{
+background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb{
+background-color: rgb(202, 202, 202);
 }

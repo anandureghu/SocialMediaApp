@@ -46,6 +46,73 @@ function Sidebar() {
                 <button className="sidebar-button">Show more</button>
                 <hr className="sidebar-hr"/>
             </ul>
+            <ul className="sidebar-friends">
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+                <li className="sidebar-friend">
+                    <img src="/assets/person/2.jpeg" alt="Friend" />
+                    John Doe
+                </li>
+            </ul>
             </div>
         </div>
     )
