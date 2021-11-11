@@ -1,0 +1,61 @@
+.rightbarWrapper{
+    padding: 20px;
+    padding-left: 0px;
+}
+.birthdayContainer{
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.birthdayContainer img{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.rightbarAd{
+    margin: 20px 0px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+h2{
+    margin: 20px 0px;
+}
+
+.rightbarFriendsList{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.rightbarFriendImage img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.rightbarFriendImage{
+    position: relative;
+    margin-right: 10px;
+}
+
+.rightbarFriend{
+    display: flex;
+    align-items: center;
+}
+
+.rightbarOnlineStatus{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: limegreen;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    border: 2px solid white
+}
+

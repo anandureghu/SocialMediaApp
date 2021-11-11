@@ -1,6 +1,6 @@
 .bodyWrapper{
     display: grid;
-    grid-template-columns: 1fr 2fr 1.2fr;
+    grid-template-columns: 1fr 2fr 0.95fr;
     height: calc(100vh-60px);
 }
 
